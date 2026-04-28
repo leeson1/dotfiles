@@ -1,0 +1,22 @@
+# 主题
+theme = "TokyoNight Moon"
+
+# 透明毛玻璃效果
+background-opacity = 0.88
+background-blur-radius = 12
+macos-titlebar-style = transparent
+
+# 字体
+font-family = MesloLGS Nerd Font Mono
+
+# 窗口状态记忆（重启不丢布局）
+window-save-state = always
+
+# 选中内容复制
+copy-on-select = clipboard
+
+
+# 快捷键设置
+
+# 设置command + l 清屏
+keybind = super+l=clear_screen
