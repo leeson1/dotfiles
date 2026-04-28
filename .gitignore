@@ -1,0 +1,4 @@
+init.lua.before-lazy.nvim
+.DS_Store
+*.swp
+*.swo
