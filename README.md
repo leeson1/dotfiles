@@ -55,7 +55,7 @@ brew install neovim starship zoxide tree-sitter-cli
 安装字体：
 
 ```sh
-brew install --cask font-meslo-lg-nerd-font
+brew install --cask font-meslo-lg-nerd-font font-jetbrains-mono-nerd-font
 ```
 
 ### Linux
@@ -113,9 +113,11 @@ sudo dnf install unzip fontconfig
 # Arch / Manjaro
 sudo pacman -S unzip fontconfig
 
-mkdir -p ~/.local/share/fonts/Meslo
+mkdir -p ~/.local/share/fonts/Meslo ~/.local/share/fonts/JetBrainsMono
 curl -fLo /tmp/Meslo.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.zip
+curl -fLo /tmp/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
 unzip -o /tmp/Meslo.zip -d ~/.local/share/fonts/Meslo
+unzip -o /tmp/JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono
 fc-cache -fv
 ```
 
@@ -147,6 +149,7 @@ Neovim >= 0.12
 
 - `nvim/lazy-lock.json` 会锁定当前 Neovim 插件版本。
 - Ghostty 配置依赖 `MesloLGS Nerd Font Mono` 字体。
+- Neovide / GUI Neovim 配置依赖 `JetBrainsMono Nerd Font` 字体。
 - Starship 配置使用 Nerd Font 图标，终端字体需要支持 Nerd Font。
 - 安装方式参考 Starship 官方文档和 zoxide 官方 README。
 - 这个仓库不保存私钥、token、密码等敏感信息。
