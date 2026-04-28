@@ -16,8 +16,8 @@ zsh/        Zsh 初始化片段
 克隆仓库：
 
 ```sh
-git clone git@github.com:leeson1/dotfiles.git ~/codes/docker_workspace/dotfiles
-cd ~/codes/docker_workspace/dotfiles
+git clone git@github.com:leeson1/dotfiles.git ~/workspace/dotfiles
+cd ~/workspace/dotfiles
 ```
 
 建立符号链接：
@@ -39,7 +39,7 @@ zsh/starship.zsh
 它会初始化 zoxide 和 Starship。可以在 `~/.zshrc` 中引用：
 
 ```sh
-source ~/codes/docker_workspace/dotfiles/zsh/starship.zsh
+source ~/workspace/dotfiles/zsh/starship.zsh
 ```
 
 ## 安装依赖
@@ -50,6 +50,12 @@ source ~/codes/docker_workspace/dotfiles/zsh/starship.zsh
 
 ```sh
 brew install starship zoxide
+```
+
+安装字体：
+
+```sh
+brew install --cask font-meslo-lg-nerd-font
 ```
 
 ### Linux
@@ -80,6 +86,24 @@ sudo apt install starship
 ```
 
 说明：zoxide 官方文档不推荐在 Debian / Ubuntu 上直接使用旧仓库包；这类系统优先使用官方安装脚本或 Linuxbrew。
+
+安装字体：
+
+```sh
+# Debian / Ubuntu
+sudo apt install unzip fontconfig
+
+# Fedora
+sudo dnf install unzip fontconfig
+
+# Arch / Manjaro
+sudo pacman -S unzip fontconfig
+
+mkdir -p ~/.local/share/fonts/Meslo
+curl -fLo /tmp/Meslo.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.zip
+unzip -o /tmp/Meslo.zip -d ~/.local/share/fonts/Meslo
+fc-cache -fv
+```
 
 ## 注意
 
