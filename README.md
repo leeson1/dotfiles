@@ -49,7 +49,7 @@ source ~/workspace/dotfiles/zsh/starship.zsh
 使用 Homebrew：
 
 ```sh
-brew install starship zoxide
+brew install neovim starship zoxide tree-sitter-cli
 ```
 
 安装字体：
@@ -59,6 +59,20 @@ brew install --cask font-meslo-lg-nerd-font
 ```
 
 ### Linux
+
+Neovim 官方预编译包：
+
+```sh
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim-linux-x86_64
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+```
+
+把 Neovim 加到 shell PATH：
+
+```sh
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+```
 
 Starship 官方安装脚本：
 
@@ -76,16 +90,16 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 
 ```sh
 # Arch / Manjaro
-sudo pacman -S starship zoxide
+sudo pacman -S neovim starship zoxide tree-sitter-cli
 
 # Fedora
-sudo dnf install starship zoxide
+sudo dnf install neovim starship zoxide tree-sitter-cli
 
 # Debian 13+ / Ubuntu 25.04+
 sudo apt install starship
 ```
 
-说明：zoxide 官方文档不推荐在 Debian / Ubuntu 上直接使用旧仓库包；这类系统优先使用官方安装脚本或 Linuxbrew。
+说明：Debian / Ubuntu 仓库里的 Neovim 和 zoxide 版本可能偏旧；这类系统优先使用 Neovim 官方预编译包、zoxide 官方安装脚本或 Linuxbrew。
 
 安装字体：
 
@@ -104,6 +118,30 @@ curl -fLo /tmp/Meslo.zip https://github.com/ryanoasis/nerd-fonts/releases/latest
 unzip -o /tmp/Meslo.zip -d ~/.local/share/fonts/Meslo
 fc-cache -fv
 ```
+
+## Git 编辑器
+
+把 Git 默认编辑器改成 Neovim：
+
+```sh
+git config --global core.editor "nvim"
+```
+
+如果还想让其他命令默认使用 Neovim，可以把下面这行放到 `~/.zshrc`：
+
+```sh
+export EDITOR="nvim"
+```
+
+## 版本要求
+
+当前 Neovim 配置建议使用：
+
+```text
+Neovim >= 0.12
+```
+
+原因是 `nvim-treesitter` 使用的是 main 分支，当前要求 Neovim 0.12.0 或更新版本。当前本机验证版本是 `NVIM v0.12.2`。
 
 ## 注意
 
