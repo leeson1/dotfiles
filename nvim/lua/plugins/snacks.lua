@@ -63,6 +63,13 @@ return {
       desc = "Grep",
     },
     {
+      "<leader>fl",
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = "Buffer Lines",
+    },
+    {
       "<leader>fb",
       function()
         Snacks.picker.buffers()
