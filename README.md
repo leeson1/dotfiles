@@ -49,7 +49,7 @@ source ~/workspace/dotfiles/zsh/starship.zsh
 使用 Homebrew：
 
 ```sh
-brew install neovim starship zoxide tree-sitter-cli
+brew install neovim starship zoxide tree-sitter-cli ripgrep
 ```
 
 安装字体：
@@ -90,13 +90,13 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 
 ```sh
 # Arch / Manjaro
-sudo pacman -S neovim starship zoxide tree-sitter-cli
+sudo pacman -S neovim starship zoxide tree-sitter-cli ripgrep
 
 # Fedora
-sudo dnf install neovim starship zoxide tree-sitter-cli
+sudo dnf install neovim starship zoxide tree-sitter-cli ripgrep
 
 # Debian 13+ / Ubuntu 25.04+
-sudo apt install starship
+sudo apt install starship ripgrep
 ```
 
 说明：Debian / Ubuntu 仓库里的 Neovim 和 zoxide 版本可能偏旧；这类系统优先使用 Neovim 官方预编译包、zoxide 官方安装脚本或 Linuxbrew。
@@ -150,6 +150,7 @@ Neovim >= 0.12
 - `nvim/lazy-lock.json` 会锁定当前 Neovim 插件版本。
 - Ghostty 配置依赖 `MesloLGS Nerd Font Mono` 字体。
 - Neovide / GUI Neovim 配置依赖 `JetBrainsMono Nerd Font` 字体。
+- Snacks picker 的全文搜索依赖 `ripgrep` 提供 `rg` 命令。
 - Starship 配置使用 Nerd Font 图标，终端字体需要支持 Nerd Font。
 - 安装方式参考 Starship 官方文档和 zoxide 官方 README。
 - 这个仓库不保存私钥、token、密码等敏感信息。
