@@ -5,8 +5,9 @@
 ## 内容
 
 ```text
-nvim/       Neovim 配置
+nvim/       自定义 Neovim 配置
 ghostty/    Ghostty 终端配置
+neovide/    Neovide 配置
 starship/   Starship prompt 配置
 zsh/        Zsh 初始化片段
 ```
@@ -23,10 +24,11 @@ cd ~/workspace/dotfiles
 建立符号链接：
 
 ```sh
-mkdir -p ~/.config ~/.config/ghostty
+mkdir -p ~/.config ~/.config/ghostty ~/.config/neovide
 
 ln -sfn "$PWD/nvim" ~/.config/nvim
 ln -sfn "$PWD/ghostty/config" ~/.config/ghostty/config
+ln -sfn "$PWD/neovide/config.toml" ~/.config/neovide/config.toml
 ln -sfn "$PWD/starship/starship.toml" ~/.config/starship.toml
 ```
 
@@ -49,7 +51,7 @@ source ~/workspace/dotfiles/zsh/starship.zsh
 使用 Homebrew：
 
 ```sh
-brew install neovim starship zoxide tree-sitter-cli ripgrep
+brew install neovim starship zoxide tree-sitter-cli ripgrep fd
 ```
 
 安装字体：
@@ -91,12 +93,15 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 ```sh
 # Arch / Manjaro
 sudo pacman -S neovim starship zoxide tree-sitter-cli ripgrep
+sudo pacman -S fd
 
 # Fedora
 sudo dnf install neovim starship zoxide tree-sitter-cli ripgrep
+sudo dnf install fd-find
 
 # Debian 13+ / Ubuntu 25.04+
 sudo apt install starship ripgrep
+sudo apt install fd-find
 ```
 
 说明：Debian / Ubuntu 仓库里的 Neovim 和 zoxide 版本可能偏旧；这类系统优先使用 Neovim 官方预编译包、zoxide 官方安装脚本或 Linuxbrew。
@@ -121,6 +126,40 @@ unzip -o /tmp/JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono
 fc-cache -fv
 ```
 
+## Neovim 配置选择
+
+Neovim 配置二选一即可。
+
+使用仓库里的 `nvim/` 配置：
+
+```sh
+ln -sfn ~/workspace/dotfiles/nvim ~/.config/nvim
+```
+
+或者直接使用 LazyVim starter：
+
+```sh
+mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null || true
+mv ~/.local/share/nvim ~/.local/share/nvim.bak 2>/dev/null || true
+mv ~/.local/state/nvim ~/.local/state/nvim.bak 2>/dev/null || true
+mv ~/.cache/nvim ~/.cache/nvim.bak 2>/dev/null || true
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+nvim
+```
+
+LazyVim 还建议安装 Nerd Font、C 编译器、`ripgrep`、`fd`，并可选安装 `lazygit`。本 README 的依赖安装命令里已经包含 `ripgrep` 和 `fd`。
+
+如果之后想从 LazyVim 切回仓库配置：
+
+```sh
+mv ~/.config/nvim ~/.config/nvim.lazyvim.bak 2>/dev/null || true
+ln -sfn ~/workspace/dotfiles/nvim ~/.config/nvim
+```
+
+参考：<https://www.lazyvim.org/>
+
 ## Git 编辑器
 
 把 Git 默认编辑器改成 Neovim：
@@ -134,23 +173,3 @@ git config --global core.editor "nvim"
 ```sh
 export EDITOR="nvim"
 ```
-
-## 版本要求
-
-当前 Neovim 配置建议使用：
-
-```text
-Neovim >= 0.12
-```
-
-原因是 `nvim-treesitter` 使用的是 main 分支，当前要求 Neovim 0.12.0 或更新版本。当前本机验证版本是 `NVIM v0.12.2`。
-
-## 注意
-
-- `nvim/lazy-lock.json` 会锁定当前 Neovim 插件版本。
-- Ghostty 配置依赖 `MesloLGS Nerd Font Mono` 字体。
-- Neovide / GUI Neovim 配置依赖 `JetBrainsMono Nerd Font` 字体。
-- Snacks picker 的全文搜索依赖 `ripgrep` 提供 `rg` 命令。
-- Starship 配置使用 Nerd Font 图标，终端字体需要支持 Nerd Font。
-- 安装方式参考 Starship 官方文档和 zoxide 官方 README。
-- 这个仓库不保存私钥、token、密码等敏感信息。
